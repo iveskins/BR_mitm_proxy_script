@@ -63,9 +63,101 @@ Replace `capture_and_parse_response.py` with your script's path if different.
 
 This project is specifically tailored to capturing and storing job postings from Bizreach. As you navigate through different job listings in your inbox, the script extracts relevant information and saves it for later review and analysis. The SQLite database serves as a convenient and efficient way to store and access this data.
 
+## Example.
+The DB will be updated like this
+
+```json
+{
+    "pg-message-job-detail-table": {
+        "勤務地": "Fictional City",
+        "年収": {
+            "salary_lower": 5000000,
+            "salary_text": "5 million ~ 7 million",
+            "salary_upper": 7000000
+        },
+        "職種": "Example Job Role"
+    },
+    "sg-table sg-table-style-add-sideborders breath-m pg-job-detail-table sg-box": {
+        "仕事内容": "Example job description...",
+        "勤務地": "Fictional City",
+        "応募資格": "Example qualifications...",
+        "採用企業情報": {
+            "company_name": "Fictional Company Inc.",
+            "事業内容": "Example business activities...",
+            "設立年月日": "Date of establishment",
+            "資本金": "Capital amount"
+        },
+        "求人番号": "123456",
+        "職種": "Example Job Role"
+    }
+}
+
+```
 
 ## Next step.
 I wanted to make this so i could then extraxt the jobs details easily into a Notion table or google spread sheet. This way I can compare opporunities better. and get and overview on what out there, and track my applications if I make them.
 I tried making another script to use cahtgpt functioncalling to extract more rich fields from the text data into a more details json schema. but it has been very hit and miss, and most me $10 already in api calls just testing .
+
+This is what i hope to ransform to 
+
+
+```json
+{
+    "jobListings": [
+        {
+            "annualSalaryText": "5 million to 7 million JPY",
+            "applicationQualifications": {
+                "mustHave": [
+                    "Experience in development and software engineering",
+                    "Familiarity with multiple programming languages"
+                ],
+                "niceToHave": [
+                    "Leadership experience",
+                    "Advanced technical certifications or equivalent knowledge"
+                ],
+                "raw": "Experience in development, basic information knowledge, multiple language proficiency."
+            },
+            "companyInfo": {
+                "businessContent": "Software development and outsourcing services",
+                "capital": "22 million JPY",
+                "establishmentDate": "2002-09-18",
+                "headquartersLocation": "Fictional City, Main Street 123",
+                "name": "Fictional Software Inc.",
+                "numberOfEmployees": "20-50",
+                "representative": "CEO John Doe"
+            },
+            "departmentPositionTitle": "Software Engineer [Web/Open Systems]",
+            "employmentDetails": {
+                "remoteWorkOptions": [
+                    "Available",
+                    "Varies based on project requirements"
+                ],
+                "status": "Full-time employee",
+                "workingHours": {
+                    "start": "9:00 AM",
+                    "end": "6:00 PM"
+                }
+            },
+            "industryTypes": [
+                "Software Development",
+                "IT Services"
+            ],
+            "jobDescription": "Engage in various software development projects, including web-based applications and embedded systems. Lead small teams and contribute to project management.",
+            "jobTypes": [
+                "Software Development"
+            ],
+            "listingNumber": "1234567",
+            "postingDate": "2023-12-01",
+            "salaryRange": {
+                "lowerLimit": 5000000,
+                "upperLimit": 7000000
+            },
+            "workLocations": [
+                "Fictional City"
+            ]
+        }
+    ]
+}
+```
 
 
